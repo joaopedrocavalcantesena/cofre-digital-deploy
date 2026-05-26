@@ -1,0 +1,11 @@
+1. Usando a analogia do cofre digital, expliquem por que é importante nunca colocar secrets diretamente no código-fonte.
+
+No projeto do cofre digital, os secrets funcionam como informações guardadas dentro de um cofre. Se colocarmos senhas, tokens e chaves diretamente no código, qualquer pessoa com acesso ao repositório poderá visualizar esses dados. Por isso utilizamos os Repository Secrets do GitHub, deixando as informações protegidas e separadas do código. Durante a atividade, configuramos dados como PROD_DB_PASSWORD, PROD_API_KEY e DOCKER_PASSWORD fora do programa para aumentar a segurança.
+
+2. Como o conceito “configure-once, deploy-many” melhora a segurança e eficiência dos deploys?
+
+O conceito configure-once, deploy-many permite configurar o sistema apenas uma vez e reutilizar a mesma estrutura em diferentes ambientes, como desenvolvimento, staging e produção. Isso reduz erros, evita repetir configurações e melhora a segurança, porque os mesmos processos podem usar secrets diferentes sem alterar o código. No projeto, usamos ambientes de staging e produção com configurações separadas.
+
+3. Por que máscaras de log são essenciais mesmo quando usamos sistemas de secrets seguros?
+
+Mesmo utilizando secrets protegidos, ainda existe risco de vazamento através dos logs do sistema. As máscaras impedem que senhas, chaves e tokens apareçam completos durante a execução do programa. No projeto, usamos ***MASKED*** para esconder informações sensíveis nos logs e proteger dados como senhas do banco e API Keys. Dessa forma, mesmo que alguém visualize os registros do sistema, os dados continuam protegidos.
